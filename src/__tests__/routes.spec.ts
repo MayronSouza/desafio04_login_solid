@@ -4,10 +4,10 @@ import { v4 } from "uuid";
 import { app } from "../index";
 import { UsersRepository } from "../modules/users/repositories/implementations/UsersRepository";
 
-describe("[POST] /users", () => {
+describe("[POST] /users/add", () => {
   it("should be able to create new users", async () => {
     const response = await request(app)
-      .post("/users")
+      .post("/users/add")
       .send({
         name: "John Doe",
         email: "john.doe@example.com",
@@ -23,7 +23,7 @@ describe("[POST] /users", () => {
 
   it("should not be able to create new users when email is already taken", async () => {
     const response = await request(app)
-      .post("/users")
+      .post("/users/add")
       .send({
         name: "John Doe",
         email: "john.doe@example.com",

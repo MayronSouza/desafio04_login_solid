@@ -1,0 +1,92 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Desafio Login SOLID MS Documentation",
+    "description": "Esta API serve para exercitar o aprendizado adquirido por Mayron Souza no IGNITE 2021.1",
+    "version": "1.0.0",
+    "contact": {
+      "email": "mayrondrummer@gmail.com"
+    }
+  },
+  "paths": {
+    "/users/add": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Create a user",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": "string"
+                }
+              },
+              "example": {
+                "name": "John Due",
+                "description": "johndue@example.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Email already exists"
+          }
+        }
+      }
+    },
+    "/users/:user_id/admin": {
+      "patch": {
+        "tags": ["User"],
+        "summary": "Update a user",
+        "description": "Update a user to the Admin",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "User not found!"
+          }
+        }
+      }
+    },
+    "/users/:user_id": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Show to user profile",
+        "description": "Show to user profile",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "User not found!"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": ["User"],
+        "summary": "List all users",
+        "description": "List all users",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "User is not Admin!"
+          }
+        }
+      }
+    }
+  }
+}
